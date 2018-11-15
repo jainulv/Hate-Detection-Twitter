@@ -1,0 +1,104 @@
+\documentclass{article}
+
+  % if you need to pass options to natbib, use, e.g.:
+  % \PassOptionsToPackage{numbers, compress}{natbib}
+  % before loading nips_2018
+  
+  % ready for submission
+  %\PassOptionsToPackage{numbers, compress}{natbib}
+  \usepackage[preprint]{nips_2018}
+  
+  % to compile a preprint version, e.g., for submission to arXiv, add
+  % add the [preprint] option:
+  % \usepackage[preprint]{nips_2018}
+  
+  % to compile a camera-ready version, add the [final] option, e.g.:
+  % \usepackage[final]{nips_2018}
+
+  % to avoid loading the natbib package, add option nonatbib:
+  % \usepackage[nonatbib]{nips_2018}
+  
+  \usepackage[utf8]{inputenc} % allow utf-8 input
+  \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+  \usepackage{hyperref}       % hyperlinks
+  \usepackage{url}            % simple URL typesetting
+  \usepackage{booktabs}       % professional-quality tables
+  \usepackage{amsfonts}       % blackboard math symbols
+  \usepackage{nicefrac}       % compact symbols for 1/2, etc.
+  \usepackage{microtype}      % microtypography
+  %\usepackage{biblatex}
+  %\addbibresource{proposal.bib}
+
+  \title{Online Hate Speech Detection on Twitter}
+  
+  % The \author macro works with any number of authors. There are two
+  % commands used to separate the names and addresses of multiple
+  % authors: \And and \AND.
+  %
+  % Using \And between authors leaves it to LaTeX to determine where to
+  % break the lines. Using \AND forces a line break at that point. So,
+  % if LaTeX puts 3 of 4 authors names on the first line, and the last
+  % on the second line, try using \AND instead of \And before the third
+  % author name.
+  
+  \author{
+    Jainul N.~Vaghasia\\
+    Department of Computer Science\\
+    University of Washington\\
+    Seattle, WA 98105 \\
+    \texttt{jnv3@cs.washington.edu}
+    %% examples of more authors
+    %% \And
+    %% Coauthor \\
+    %% Affiliation \\
+    %% Address \\
+    %% \texttt{email} \\
+    %% \AND
+    %% Coauthor \\
+    %% Affiliation \\
+    %% Address \\
+    %% \texttt{email} \\
+    %% \And
+    %% Coauthor \\
+    %% Affiliation \\
+    %% Address \\
+    %% \texttt{email} \\
+    %% \And
+    %% Coauthor \\
+    %% Affiliation \\
+    %% Address \\
+    %% \texttt{email} \\
+  }
+  
+  \begin{document}
+  % \nipsfinalcopy is no longer used
+  
+  \maketitle
+  \section{Proposal}
+  \subsection{Datasets}
+  Sexism/Racism dataset (\cite{waseem-hovy:2016:N16-2}), Hate dataset (\cite{hateoffensive}), expecting use of synthetic data to explore additional behavior.
+  \subsection{Idea}
+  Determining whether a tweet is offensive or not is an online binary classification problem that is
+  inherently challenged by class imbalance and concept drift---it is expected that offensive tweets appear
+  less often than not, and that the underlying distribution of such tweets varies based on socio-political events (\cite{Golbeck:2017:LLC:3091478.3091509}).
+  In this project, we explore an online approach based on selective resampling of a subset of past training data,
+  and apply it to a neural network classifier based on word embeddings for predicting the class, offensive or not, of a tweet.
+  \cite{Malialis2018QueueBasedRF}'s novel, online algorithm, albeit simple, is highly intuitive and produces high quality results on synthetic data, whereas
+  \cite{kshirsagar2018predictive}'s work uses relatively fewer parameters than its counterparts on offline model while achieving high F1 scores.
+  
+  We stress-test the union of both ideas
+  and explore whether it works equally well while addressing the aforementioned practical problems one might encounter with the given classification problem.
+  If this approach works, what does each idea bring to the approach?
+  Do we experience any counteraction on working of one algorithm as a result of the other one and vice-versa?
+  If the approach fails, what makes this problem uniquely difficult to solve: online vs. offline, magnitude of imbalance, type of drift? We wish
+  to explore these potential questions in this project.
+  \subsection{Software}
+  We expect to implement all the required algorithms and model online data streams using basic Python libraries like Numpy, Scipy, etc.
+
+  \subsection{Expected Progress by Milestone}
+  By the Milestone, we expect to produce experimental evidence on effectiveness of the approach on online class imbalance.
+
+  \bibliographystyle{plainnat}
+  \bibliography{proposal}
+
+  \end{document}
